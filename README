@@ -2,7 +2,7 @@ veripy
 ======
 
 veripy is a tool for verifying the compliance of ICT Equipment against the
-requirements for IPv6 set out in RIPE-501.
+requirements for IPv6 set out in ripe-554 (formerly ripe-501).
 
 For more information about veripy, see the project website: http://veripy.org/
 or follow us on Twitter: @veripyv6
@@ -13,8 +13,8 @@ Copyright (C) 2012 MWR InfoSecurity.
 Installation and Usage
 ----------------------
 
-For detailed installation and usage information, please refer to the Operator's
-Guide.
+For detailed installation and usage information, please refer to the the veripy
+website or the Operator's Manual.
 
 
 License
