@@ -1,0 +1,43 @@
+veripy
+======
+
+veripy is a tool for verifying the compliance of ICT Equipment against the
+requirements for IPv6 set out in RIPE-501.
+
+For more information about veripy, see the project website: http://veripy.org/
+or follow us on Twitter: @veripyv6
+
+Copyright (C) 2012 MWR InfoSecurity.
+
+
+Installation and Usage
+----------------------
+
+For detailed installation and usage information, please refer to the Operator's
+Guide.
+
+
+License
+-------
+
+veripy is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+veripy is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+veripy. If not, see <http://www.gnu.org/licenses/>.
+
+veripy makes use of a number of code libraries. These are the copyright of
+their respective owners.
+
+  Library             URL                                           License
+  ------------------- --------------------------------------------- ---------
+  Baseline CSS        http://baselinecss.com/                       CC A/SA
+  scapy               http://www.secdev.org/projects/scapy/         GPLv2
+  xyaptu              http://code.activestate.com/recipes/162292/   PSF
+  yaptu               http://code.activestate.com/recipes/52305/    PSF

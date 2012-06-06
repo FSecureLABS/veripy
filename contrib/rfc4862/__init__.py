@@ -1,0 +1,125 @@
+from veripy.models import ComplianceTestSuite
+from veripy.models.decorators import must, should
+import address_autoconfiguration_and_dad
+import receiving_dad_neighbor_solicitations_and_advertisements
+import validation_of_dad_neighbor_solicitations
+import validation_of_dad_neighbor_advertisements
+import receiving_neighbor_solicitations_for_addr_resolution
+import global_address_autoconfiguration_and_dad
+import address_lifetime_expiry
+import multiple_prefixes_and_network_renumbering
+import prefix_information_option_processing
+import prefix_information_option_processing_lifetime
+
+class StatelessAddressAutoconfigurationHostTestSuite(ComplianceTestSuite):
+
+    # 3.1.1
+    TestCase_001 = address_autoconfiguration_and_dad.AddressAutoConfigurationAndDadTestCase
+
+    # 3.1.2
+    TestCase_002 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNsTargetIsNotUutTestCase
+    TestCase_003 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNsTargetIsUutHostTestCase
+    TestCase_004 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNaTargetIsNotUutTestCase
+    TestCase_005 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNaTargetIsUutHostTestCase
+
+    # 3.1.3
+    TestCase_006 = validation_of_dad_neighbor_solicitations.UutReceiveInvalidDadNsLength16TestCase
+    TestCase_007 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsHopLimit254TestCase
+    TestCase_008 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsDstIsUutTentTestCase
+    TestCase_009 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsDstIsAllNodeTestCase
+    TestCase_010 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsICMPCode1TestCase
+    TestCase_011 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsInvalidChecksumTestCase
+    TestCase_012 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsTargetMulticastTestCase
+    TestCase_013 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsContainsSLLTestCase
+    TestCase_014 = validation_of_dad_neighbor_solicitations.UutReceivesValidDadNsContainsReservedFieldHostTestCase
+    TestCase_015 = validation_of_dad_neighbor_solicitations.UutReceivesValidDadNsContainsTLLHostTestCase
+
+    # 3.1.4
+    TestCase_016 = validation_of_dad_neighbor_advertisements.UutReceiveInvalidDadNaLength16TestCase
+    TestCase_017 = validation_of_dad_neighbor_advertisements.UutReceiveInvalidDadNaHopLimit254TestCase
+    TestCase_018 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaIcmpCode1TestCase
+    TestCase_019 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaInvalidChecksumTestCase
+    TestCase_020 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaSolicitedFlag1TestCase
+    TestCase_021 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaTargetMulticastTestCase
+    TestCase_022 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaOptionLength0TestCase
+    TestCase_023 = validation_of_dad_neighbor_advertisements.UutReceivesValidDadNaContainsSLLHostTestCase
+    TestCase_024 = validation_of_dad_neighbor_advertisements.UutReceivesValidDadNaReservedFieldHostTestCase
+
+    # 3.1.5
+    TestCase_025 = receiving_neighbor_solicitations_for_addr_resolution.ReceivingDadNsForAddrResSrcUnicastTestCase
+    TestCase_026 = receiving_neighbor_solicitations_for_addr_resolution.ReceivingDadNsForAddrResDstIsUutTestCase
+
+    # 3.2.1
+    TestCase_027 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadGlobalHostTestCase
+    TestCase_028 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadPrefixEndingInZeroHostTestCase
+    TestCase_029 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadSiteLocalHostTestCase
+
+    # 3.2.2 Host Only
+    TestCase_030 = address_lifetime_expiry.AddressLifetimeExpiryTestCase
+
+    # 3.2.3 Host Only
+    TestCase_031 = multiple_prefixes_and_network_renumbering.MultiplePrefixesAndNetworkRenumberingTestCase
+
+    # 3.2.4 Host Only
+    TestCase_032 = prefix_information_option_processing.PrefixInformationOptionProcessingMultiplePrefixesTestCase
+    TestCase_033 = prefix_information_option_processing.PrefixInformationOptionProcessingAutonomousFlagNotSetTestCase
+    TestCase_034 = prefix_information_option_processing.PrefixInformationOptionProcessingPrefixLinkLocalTestCase
+    TestCase_035 = prefix_information_option_processing.PrefixInformationOptionProcessingPreferredLifetimeGreaterValidLifetimeTestCase
+    TestCase_036 = prefix_information_option_processing.PrefixInformationOptionProcessingPrefixLengthGreater128TestCase
+    TestCase_037 = prefix_information_option_processing.PrefixInformationOptionProcessingPrefixLengthLess64TestCase
+    TestCase_038 = prefix_information_option_processing.PrefixInformationOptionProcessingPrefixLengthBetween64And128TestCase
+    TestCase_039 = prefix_information_option_processing.PrefixInformationOptionProcessingValidLifetime0TestCase
+    TestCase_040 = prefix_information_option_processing.PrefixInformationOptionProcessingHopLimit254TestCase
+    TestCase_041 = prefix_information_option_processing.PrefixInformationOptionProcessingValidLifetime0xffffffffTestCase
+
+    # 3.2.5 Host Only
+    TestCase_042 = prefix_information_option_processing_lifetime.PrefixInformationOptionProcessingLifetimePrefixLifetimeGreaterRemainingLifetimeTestCase
+    TestCase_043 = prefix_information_option_processing_lifetime.PrefixInformationOptionProcessingLifetimePrefixLifetimeGreaterThan2HoursTestCase
+    TestCase_044 = prefix_information_option_processing_lifetime.PrefixInformationOptionProcessingLifetimePrefixLifetimeLessThanRemainingGreaterThan2HoursTestCase
+    TestCase_045 = prefix_information_option_processing_lifetime.PrefixInformationOptionProcessingLifetimePrefixLifetimeLessThan2hoursRemainingGreaterThan2HoursTestCase
+
+class StatelessAddressAutoconfigurationRouterTestSuite(ComplianceTestSuite):
+
+    # 3.1.1
+    TestCase_001 = address_autoconfiguration_and_dad.AddressAutoConfigurationAndDadTestCase
+
+    # 3.1.2
+    TestCase_002 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNsTargetIsNotUutTestCase
+    TestCase_003 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNsTargetIsUutRouterTestCase
+    TestCase_004 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNaTargetIsNotUutTestCase
+    TestCase_005 = receiving_dad_neighbor_solicitations_and_advertisements.ReceivesDadNaTargetIsUutRouterTestCase
+
+    # 3.1.3
+    TestCase_006 = validation_of_dad_neighbor_solicitations.UutReceiveInvalidDadNsLength16TestCase
+    TestCase_007 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsHopLimit254TestCase
+    TestCase_008 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsDstIsUutTentTestCase
+    TestCase_009 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsDstIsAllNodeTestCase
+    TestCase_010 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsICMPCode1TestCase
+    TestCase_011 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsInvalidChecksumTestCase
+    TestCase_012 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsTargetMulticastTestCase
+    TestCase_013 = validation_of_dad_neighbor_solicitations.UutReceivesInvalidDadNsContainsSLLTestCase
+    TestCase_014 = validation_of_dad_neighbor_solicitations.UutReceivesValidDadNsContainsReservedFieldRouterTestCase
+    TestCase_015 = validation_of_dad_neighbor_solicitations.UutReceivesValidDadNsContainsTLLRouterTestCase
+
+    # 3.1.4
+    TestCase_016 = validation_of_dad_neighbor_advertisements.UutReceiveInvalidDadNaLength16TestCase
+    TestCase_017 = validation_of_dad_neighbor_advertisements.UutReceiveInvalidDadNaHopLimit254TestCase
+    TestCase_018 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaIcmpCode1TestCase
+    TestCase_019 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaInvalidChecksumTestCase
+    TestCase_020 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaSolicitedFlag1TestCase
+    TestCase_021 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaTargetMulticastTestCase
+    TestCase_022 = validation_of_dad_neighbor_advertisements.UutReceivesInvalidDadNaOptionLength0TestCase
+    TestCase_023 = validation_of_dad_neighbor_advertisements.UutReceivesValidDadNaContainsSLLRouterTestCase
+    TestCase_024 = validation_of_dad_neighbor_advertisements.UutReceivesValidDadNaReservedFieldRouterTestCase
+
+    # 3.1.5
+    TestCase_025 = receiving_neighbor_solicitations_for_addr_resolution.ReceivingDadNsForAddrResSrcUnicastTestCase
+    TestCase_026 = receiving_neighbor_solicitations_for_addr_resolution.ReceivingDadNsForAddrResDstIsUutTestCase
+
+    # 3.2.1
+    TestCase_027 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadGlobalRouterTestCase
+    TestCase_028 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadPrefixEndingInZeroRouterTestCase
+    TestCase_029 = global_address_autoconfiguration_and_dad.GlobalAddressAutoConfigurationAndDadSiteLocalRouterTestCase
+    
+ComplianceTestSuite.register('stateless-address-autoconfiguration-end-node', StatelessAddressAutoconfigurationHostTestSuite)
+ComplianceTestSuite.register('stateless-address-autoconfiguration-intermediate-node', StatelessAddressAutoconfigurationRouterTestSuite)

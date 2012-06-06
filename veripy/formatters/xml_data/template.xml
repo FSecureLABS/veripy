@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE veripy SYSTEM "http://veripy.org/dtds/report-v1.dtd">
+<veripy>
+    <report>
+        <header>
+            <key name="title">${report.title}</key>
+            <key name="profile">${report.klass}</key>
+            <key name="vendor">${report.vendor}</key>
+            <key name="device">${report.device}</key>
+            <key name="notes">${report.notes}</key>
+            <key name="compliant">${report.is_compliant() and "Compliant" or "Not Compliant"}</key>
+        </header>
+
+        <py-open code="for suite in report.results():"/>
+            <test-suite>
+                <title>${suite.test_suite.title()}</title>
+                <description>${suite.test_suite.description()}</description>
+                <compliant>${suite.is_compliant()}</compliant>
+                <py-open code="for result in suite.results():"/>
+                    <test-case>
+                        <title>${result.test_case.title()}</title>
+                        <description>${result.test_case.description()}</description>
+                        <compliant>${result.outcome.result_string()}</compliant>
+                        <message>${result.outcome.message}</message>
+                        <backtrace>${result.outcome.backtrace}</backtrace>
+                        <log-file>${asset_path}/${id(result)}/veripy.log</log-file>
+                        <py-open code="for (link, pcap) in result.outcome.network_dumps:"/>
+                            <py-open code="if len(pcap) > 0:"/>
+                                <pcap link="${link}">${asset_path}/${id(result)}/link-${link}.pcap</pcap>
+                            <py-close/>
+                        <py-close/>
+                    </test-case>
+                <py-close/>
+            </test-suite>
+        <py-close/>
+    </report>
+</veripy>

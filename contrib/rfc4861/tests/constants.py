@@ -1,0 +1,4 @@
+#in seconds
+MAX_RANDOM_FACTOR = 1.5
+DELAY_FIRST_PROBE_TIME = 5
+

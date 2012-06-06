@@ -1,0 +1,16 @@
+<!ELEMENT veripy (report)>
+<!ELEMENT report (header, test-suite+)>
+<!ELEMENT header (key+)>
+<!ELEMENT key (#PCDATA)>
+<!ELEMENT test-suite (title, description, compliant, test-case+)>
+<!ELEMENT test-case (title, description, compliant, message, backtrace, log-file, pcap+)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT compliant (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT backtrace (#PCDATA)>
+<!ELEMENT log-file (#PCDATA)>
+<!ELEMENT pcap (#PCDATA)>
+
+<!ATTLIST key name (title|profile|vendor|device|notes|compliant) #REQUIRED>
+<!ATTLIST pcap link CDATA #REQUIRED>
